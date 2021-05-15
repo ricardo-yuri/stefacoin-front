@@ -1,0 +1,54 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="card ">
+    <div class="card-body ">
+        <h4 class="text-center">Nova conta</h4>
+        <form [formGroup]="formulario">
+        <div class="row ">
+            <div class="col-sm-8  mx-auto"> 
+                <div class="mb-3">
+                    <label for="tx-nome" class="form-label">Nome</label>
+                    <input type="text" formControlName="nome" class="form-control" id="tx-nome" />
+                  </div>     
+                    <div class="mb-3">
+                      <label for="tx-email" class="form-label">Email</label>
+                      <input type="email" formControlName="email" class="form-control" id="tx-email" />
+                    </div>
+                    <div *ngIf="isAluno">
+                        <div class="mb-3">
+                            <label for="tx-formacao" class="form-label">Formação</label>
+                            <input type="email" formControlName="formacao" class="form-control" id="tx-formacao" />
+                          </div>
+                          <div class="mb-3">
+                            <label for="tx-idade" class="form-label">Idade</label>
+                            <input type="number" formControlName="idade" class="form-control" id="tx-idade" />
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="pwd-senha" class="form-label">Senha</label>
+                      <input type="password" formControlName="senha" class="form-control" id="pwd-senha" />
+                    </div>
+                    <select class="form-select" aria-label="Default select example" formControlName="tipo">
+                        <option selected>Selecione o tipo de conta</option>
+                        <option value="2">Aluno</option>
+                        <option value="1">Professor</option>
+                      </select>
+                      <br>
+                    <button type="submit" class="btn btn-primary mr-5 mt-3" (click)="cadastrar()">Cadastrar</button>
+                  
+            </div>
+  
+        </div>
+    </form>
+  
+</div>
+    </div>
+    
+
+
+  

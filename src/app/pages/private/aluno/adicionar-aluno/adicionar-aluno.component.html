@@ -1,0 +1,43 @@
+<div class="container">
+    <form [formGroup]="formulario"> 
+        <div class="form-group mt-5">
+            <div class="row">
+                <div class="col-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" laceholder="Digite o nome do prof" formControlName="nome">        
+                </div>
+                <div class="col-3">
+                    <label for="nome">Email</label>
+                    <input type="email" class="form-control" id="email" laceholder="Email" formControlName="email">        
+                </div>
+                <div class="col-3">
+                    <label for="nome">Senha</label>
+                    <input type="password" class="form-control" id="senha" laceholder="Digite a senha" formControlName="senha">        
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label for="formacao">Formação</label>
+                    <input type="text" class="form-control" id="formacao" laceholder="Digite o nome do prof" formControlName="formacao">                     
+                </div>
+                <div class="col-6">
+                    <label for="idade">Idade</label>
+                    <input type="number" class="form-control" id="idade" laceholder="Digite o nome do prof" formControlName="idade">                     
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="width: 300px" formControlName="cursos">
+                        <option selected>Escolha o curso</option>
+                        <option *ngFor="let curso of cursos" [value]="curso.id">{{curso.nome}}</option>
+                      </select>
+                    
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" (click)="send()">Salvar </button>
+            
+        </div>
+    </form>
+    </div>
+    
+    

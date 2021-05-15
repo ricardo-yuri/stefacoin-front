@@ -1,0 +1,64 @@
+<div class="container">
+    <h2 class="text-center">Cursos</h2>
+<table class="table">
+    <thead>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th *ngIf="tipo === 1">
+            Ações
+        </th>
+        <th *ngIf="tipo === 2">
+            Avaliar
+        </th>
+    </thead>
+   <tbody>
+       <tr *ngFor="let curso of cursos">
+         <td>{{curso.id}}</td>
+         <td>{{curso.nome}}</td>
+         <td>{{curso.descricao}}</td>
+         <td *ngIf="tipo === 1">
+          <i class="fas fa-edit" (click)="atualizarCurso(curso)" tooltip="Atualizar curso"></i>
+          <i class="fas fa-trash-alt" (click)="delete(curso, templateCursoExclusao)" tooltip="Deletar curso"></i></td>
+          <td *ngIf="tipo === 2">
+              <div>
+                <ngb-rating [rate]="currentRate" (click)="openModal(template, curso)"></ngb-rating>
+
+              </div>
+              <div *ngIf="!avaliacaoAberta">
+                  <i [class]="estrela.class" *ngFor="let estrela of estrelaAvaliada"></i>
+              </div>
+          </td>
+       </tr>
+   
+
+   </tbody>
+  </table>
+</div>
+
+
+<br><br>
+<pre class="card card-block card-header"></pre>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Você deseja avaliar este curso com {{ currentRate }} estrelas?</p>
+    <button type="button" class="btn btn-primary" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-seconday"(click)="close()" >Não</button>
+  </div>
+</ng-template>
+
+
+<pre class="card card-block card-header"></pre>
+<ng-template #templateCursoExclusao>
+  <div class="modal-body text-center">
+    <p>Você deseja excluir o curso <b>{{ cursoSerExcluida.nome }}</b></p>
+    <button type="button" class="btn btn-primary" (click)="confirmExclusao()" >Sim</button>
+    <button type="button" class="btn btn-seconday"(click)="closeExclusao()" >Não</button>
+  </div>
+</ng-template>

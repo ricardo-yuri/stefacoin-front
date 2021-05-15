@@ -1,0 +1,71 @@
+<h2 class="text-center">Alunos</h2>
+<table class="table">
+    <thead>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Formação
+        </th>
+        <th>
+            Ações
+        </th>
+    </thead>
+   <tbody>
+       <tr *ngFor="let aluno of alunos">
+         <td>{{aluno.id}}</td>
+         <td>{{aluno.nome}}</td>
+         <td>{{aluno.email}}</td>
+         <td>{{aluno.formacao}}</td>
+
+         <td>
+          <i class="fas fa-plus-circle" tooltip="Adicionar novo curso" (click)="openModal(template, aluno)"></i>
+          <i class="fas fa-edit" tooltip="Atualizar aluno" (click)="atualizar(aluno)"></i>
+          <i class="fas fa-trash-alt"  tooltip="Deletar aluno" (click)="delete(aluno, templateCursoExclusao)"></i></td>
+       </tr>
+   
+
+   </tbody>
+  </table>
+
+
+
+ 
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Incluir novo curso</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <b>Aluno:</b> {{ alunoAdicionarCurso.nome }}
+      <br>
+      <br>
+      <b>Adicionar novo curso: </b>
+      <br>
+      <select name="cursos" id="curso" [(ngModel)]="cursoSelecionado">
+        <option *ngFor="let curso of cursos" [value]="curso.id">{{curso.nome}}</option>
+      </select>
+      <br>
+      <button class="btn btn-secondary mt-4" (click)="adicionarNovoCurso(alunoAdicionarCurso, cursoSelecionado)">Adicionar</button>
+    </div>
+  </ng-template>
+
+
+  <pre class="card card-block card-header"></pre>
+<ng-template #templateCursoExclusao>
+  <div class="modal-body text-center">
+    <p>Você deseja excluir o(a) aluno(a) <b>{{ alunoSerExcluido.nome }}</b>?</p>
+    <button type="button" class="btn btn-primary" (click)="confirmExclusao()" >Sim</button>
+    <button type="button" class="btn btn-seconday"(click)="closeExclusao()" >Não</button>
+  </div>
+</ng-template>
+
+

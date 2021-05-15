@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="showHeader()">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">Stefacoin</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Area do Professor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="incluirProf()">Novo professor</a>
+            <a class="dropdown-item" routerLink="listar-professor">Listar professores</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aluno
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="incluirAluno()">Novo aluno</a>
+            <a class="dropdown-item" routerLink="listar-aluno">Listar alunos</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Curso / Aulas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="incluirCurso()">Novo curso</a>
+            <a class="dropdown-item" routerLink="listar-curso">Listar cursos</a>
+          </div>
+          
+        </li>
+ 
+        
+    
+        <li class="nav-item" *ngIf="usuario?.tipo === 2">
+          <a class="nav-link" href="#">Area do Aluno</a>
+        </li>
+        <li class="nav-item" *ngIf="usuario?.tipo === 2">
+          <a class="nav-link" href="avaliar-curso">Avaliar Cursos</a>
+        </li>
+      </ul>
+      <button class="btn btn-primary my-2 my-sm-0" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

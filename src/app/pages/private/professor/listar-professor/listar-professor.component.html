@@ -1,0 +1,36 @@
+<h2 class="text-center">Professores</h2>
+<table class="table">
+    <thead>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Ações
+        </th>
+    </thead>
+   <tbody>
+       <tr *ngFor="let professor of professores">
+         <td>{{professor.id}}</td>
+         <td>{{professor.nome}}</td>
+         <td>{{professor.email}}</td>
+         <td> <i class="fas fa-edit" tooltip="Editar professor" (click)="atualizar(professor)"></i><i class="fas fa-trash-alt" tooltip="Deletar professor" (click)="delete(professor, templateCursoExclusao)"></i></td>
+       </tr>
+       
+
+   </tbody>
+  </table>
+
+  <pre class="card card-block card-header"></pre>
+<ng-template #templateCursoExclusao>
+  <div class="modal-body text-center">
+    <p>Você deseja excluir o(a) professor(a) <b>{{ professorSerExcluido.nome }}</b>?</p>
+    <button type="button" class="btn btn-primary" (click)="confirmExclusao()" >Sim</button>
+    <button type="button" class="btn btn-seconday"(click)="closeExclusao()" >Não</button>
+  </div>
+</ng-template>
